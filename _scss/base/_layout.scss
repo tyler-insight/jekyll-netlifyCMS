@@ -1,0 +1,356 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body,
+html {
+
+}
+/*---------------------------------
+Examples formatting
+----------------------------------*/
+
+/*---------------------------------
+Grids
+----------------------------------*/
+$neat-grid: ( columns: 1, gutter: $grid-gutter, );
+$neat-small: ( columns: 2, gutter: $grid-gutter, media: 600px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-medium: ( columns: 6, gutter: $grid-gutter, media: 900px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-large: ( columns: 12, gutter: $grid-gutter, media: 1200px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-larger: ( columns: 12, gutter: $grid-gutter, media: 1800px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-super: ( columns: 12, gutter: $grid-gutter, media: 2400px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-grid-full: ( columns: 1, gutter: 0px, );
+$neat-small-full: ( columns: 2, gutter: 0px, media: 600px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-medium-full: ( columns: 6, gutter: 0px, media: 900px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-large-full: ( columns: 12, gutter: 0px, media: 1200px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-larger-full: ( columns: 12, gutter: 0px, media: 1800px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+$neat-super-full: ( columns: 12, gutter: 0px, media: 2400px, color: rgba(#00d4ff, 0.25), direction: ltr, );
+
+section {
+    @include grid-container;
+    @include grid-media($neat-small) {
+         @include grid-container($neat-small);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-container($neat-medium);
+    }
+    @include grid-media($neat-large) {
+         @include grid-container($neat-large);
+    }
+    @include grid-media($neat-larger) {
+         @include grid-container($neat-larger);
+    }
+    @include grid-media($neat-super) {
+         @include grid-container($neat-super);
+    }
+}
+
+#content {
+  margin-top: $nav-height;
+}
+
+.full-edge {
+    @include grid-collapse;
+}
+/*---------------------------------
+Standard Columns
+----------------------------------*/
+.full-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(2);
+    }
+}
+
+.half-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(3);
+    }
+    @include grid-media($neat-large) {
+         @include grid-column(6);
+    }
+}
+
+.one-thirds-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(2);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-large) {
+         @include grid-column(4);
+    }
+}
+
+.fourth-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(3);
+    }
+    @include grid-media($neat-large) {
+         @include grid-column(3);
+    }
+}
+
+.sixth-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-large) {
+         @include grid-column(2);
+    }
+}
+
+.twelfth-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-large) {
+         @include grid-column(1);
+    }
+}
+
+.two-thirds-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(2);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(4);
+    }
+    @include grid-media($neat-large) {
+         @include grid-column(8);
+    }
+}
+/*---------------------------------
+Full Grids
+---------------------------------*/
+.full-column-full {
+    @include grid-column(1, $neat-grid-full);
+}
+
+.half-column-full {
+    @include grid-column(1, $neat-grid-full);
+    @include grid-media($neat-small-full) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium-full) {
+         @include grid-column(3);
+    }
+    @include grid-media($neat-large-full) {
+         @include grid-column(6);
+    }
+}
+
+.one-thirds-column-full {
+    @include grid-column(1, $neat-grid-full);
+    @include grid-media($neat-medium-full) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-large-full) {
+         @include grid-column(4);
+    }
+}
+
+.fourth-column-full {
+    @include grid-column(1, $neat-grid-full);
+    @include grid-media($neat-small-full) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium-full) {
+         @include grid-column(3);
+    }
+    @include grid-media($neat-large-full) {
+         @include grid-column(3);
+    }
+}
+
+.sixth-column-full {
+    @include grid-column(1, $neat-grid-full);
+    @include grid-media($neat-small-full) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium-full) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-large-full) {
+         @include grid-column(2);
+    }
+}
+
+.twelfth-column-full {
+    @include grid-column(1, $neat-grid-full);
+    @include grid-media($neat-small-full) {
+        @include grid-column(1);
+    }
+    @include grid-media($neat-medium-full) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-large-full) {
+         @include grid-column(1);
+    }
+}
+
+.two-thirds-column-full {
+    @include grid-column(1, $neat-grid-full);
+    @include grid-media($neat-small-full) {
+        @include grid-column(2);
+    }
+    @include grid-media($neat-medium-full) {
+         @include grid-column(4);
+    }
+    @include grid-media($neat-large-full) {
+         @include grid-column(8);
+    }
+}
+/*---------------------------------
+Centered Columns
+----------------------------------*/
+.five-sixth-column {
+    @include grid-column(1);
+    @include grid-media($neat-small) {
+        @include grid-column(2);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(5);
+        @include grid-push(.5);
+    }
+}
+
+.two-thirds-column-centered {
+    @include grid-media($neat-medium) {
+         @include grid-push(1);
+    }
+}
+
+.half-column-centered {
+    @include grid-media($neat-small) {
+         @include grid-column(2);
+    }
+    @include grid-media($neat-medium) {
+         @include grid-column(3);
+        @include grid-push(1.5);
+    }
+    @include grid-media($neat-large) {
+         @include grid-push(3);
+    }
+}
+
+.one-thirds-column-centered {
+    @include grid-media($neat-medium) {
+         @include grid-push(2);
+    }
+}
+
+.margin-bottom {
+    margin-bottom: 1rem;
+
+    @include grid-media($neat-small) {
+        margin-bottom: 2rem;
+    }
+}
+
+.margin-bottom-large {
+    margin-bottom: 2em;
+
+    @include grid-media($neat-small) {
+        margin-bottom: 4rem;
+    }
+}
+
+.side-padding {
+  padding: 0 $column-padding-small;
+  @include grid-media($neat-small) {
+      padding: 0 $column-padding-regular;
+  }
+}
+
+.full-padding {
+  padding: $column-padding-small;
+  @include grid-media($neat-small) {
+      padding: $column-padding-regular;
+  }
+}
+
+.no-padding {
+    padding: 0;
+}
+/*---------------------------------
+Examples
+----------------------------------*/
+.image-block {
+    text-align: left;
+
+    background: #fff;
+
+    .third-shift-right {
+      @include grid-media($neat-medium-full) {
+        @include grid-shift(4);
+      }
+    }
+
+    .two-thirds-shift-left {
+      @include grid-media($neat-medium-full) {
+        @include grid-shift(-2);
+      }
+    }
+
+    .half-shift-right {
+      @include grid-media($neat-small-full) {
+        @include grid-shift(1);
+      }
+    }
+
+    .half-shift-left {
+      @include grid-media($neat-small-full) {
+        @include grid-shift(-1);
+      }
+    }
+
+    .two-thirds-column-full {
+        height: 100%;
+    }
+
+    .third-image-box, .half-image-box {
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+
+p {
+    text-align: left;
+}
+
+.image-grid {
+    img {}
+}
